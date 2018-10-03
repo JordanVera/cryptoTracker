@@ -43,3 +43,6 @@
   .anim-nav-exited {
     top: -0px;
     opacity: 0; }
+
+nav a {
+  margin-right: 12px; }

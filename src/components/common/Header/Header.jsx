@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { Container, Navbar } from 'reactstrap';
-import { Timeline, Close, Menu, MailOutline } from '@material-ui/icons';
+import { Container, Navbar, Button } from 'reactstrap';
+import { Timeline, Close, Menu, MailOutline, VpnKey } from '@material-ui/icons';
 import { ROUTE_HOME } from '../../RootRoutes';
 import { Link } from 'react-router-dom';
 import { Transition } from 'react-transition-group';
@@ -8,6 +8,7 @@ import { FormattedMessage } from 'react-intl';
 import { APP_MAIL, APP_NAME } from '../../../constans';
 import { ThemeConsumer } from '../../theme/Theme';
 import ThemeSwitcher from '../../theme/ThemeSwitcher';
+import SignInModal from '../../Modal/SigninModal';
 import './Header.css';
 
 const DURATION = 150;
@@ -53,9 +54,9 @@ class Header extends Component {
             <div className={`anim-bg anim-nav anim-nav-${state}`}>
               <Container className="text-right">
                 <nav>
-                  <a href={`mailto:${APP_MAIL}`} title="Mail Us">
-                    <MailOutline />&nbsp;<FormattedMessage id="app.mail-us" defaultMessage="Mail Us" />
-                  </a>
+                {/* <Button color="danger">{this.props.buttonLabel}</Button> */}
+                  {/* <Button color="primary"  onClick={this.toggle} size="sm">Login</Button> */}
+                  <SignInModal />
                 </nav>
               </Container >
             </div>

@@ -4,7 +4,7 @@ const mongoose = require('mongoose'),
 
 const userSchema = new Schema({
     first_name: { type: String, required: true },
-    sur_name: { type: Number, required: true },
+    sur_name: { type: String, required: true },
     portfolio:[coinOwned]
 })
 
