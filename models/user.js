@@ -3,8 +3,8 @@ const mongoose = require('mongoose'),
       Schema   = mongoose.Schema;
 
 const userSchema = new Schema({
-    first_name: { type: String, required: true },
-    sur_name: { type: String, required: true },
+    username: { type: String, required: true },
+    password: { type: String, required: true },
     portfolio:[coinOwned]
 })
 
