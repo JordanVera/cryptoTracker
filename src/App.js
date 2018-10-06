@@ -24,13 +24,16 @@ constructor(props) {
 componentWillMount = _ => {
   this.removeAuthListener = app.auth().onAuthStateChanged((user) => {
     if (user) {
+      console.log(user.uid)
       this.setState({
         authenticated: true,
+        uid: user.uid,
         loading: false
       })
     } else {
       this.setState({
         authenticated: false,
+        uid: null,
         loading: false
       })
     }

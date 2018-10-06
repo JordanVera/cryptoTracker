@@ -1,7 +1,10 @@
 import React, { Fragment } from 'react';
 import { Button } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
+import HoldModal from './Modal/HoldModal'
 import { CHANGELLY_REF_ID } from '../constans';
+import { Link } from 'react-router-dom';
+import HoldCoin from './auth/holdcoin';
 
 const Exchange = ({ currency, type }) => {
   return (
@@ -30,7 +33,7 @@ const Exchange = ({ currency, type }) => {
     //     <Button color="primary">Track</Button>
     //   </Fragment>
 
-    <Button color="primary">Hold</Button>
+    <Link to="/holdcoin">hold</Link>
   )
 }
 

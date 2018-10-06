@@ -14,11 +14,28 @@ module.exports = {
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       },
-    signUpUser: function(req, res) {
-        db.User
-            .create({
-                username: req.body.username,
-                password: req.body.password
+    authUser: function(req, res) {
+        console.log(req.body.uid);
+        // check if the user exists in the db
+        db.User.find({uid:req.body.uid})
+            .then((results) => {
+                console.log(results);
+                if(results.length > 0){
+                    console.log("Found user")
+                      return res.json(results[0]);
+                } else {
+                    console.log("Making new User")
+                    db.User.create({
+                        uid: req.body.uid
+                    })
+                    .then(results => {
+                        return res.json(results);
+                    })
+                }
             })
+            .catch(err => {
+                console.log(err);
+                 return res.json({error: err});
+            });
     }
 }

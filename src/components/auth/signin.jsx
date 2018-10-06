@@ -1,10 +1,11 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Alert } from 'reactstrap';
+import { Button, Alert } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 import { Toaster, Intent } from '@blueprintjs/core';
 import { app, facebookProvider } from "../../firebase/firebase";
+import axios from 'axios';
 
 const signinStyles = {
   width: "90%",
@@ -18,16 +19,8 @@ class SignInForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      modal: false,
       redirect: false
     };
-    this.toggle = this.toggle.bind(this);
-  }
-
-  toggle() {
-    this.setState({
-      modal: !this.state.modal
-    });
   }
 
   authWithFacebook = _ => {
@@ -37,6 +30,16 @@ class SignInForm extends React.Component {
           this.Toaster.show({intent: Intent.DANGER, message: 'Unable to sign in with Facebook'})
         } else {
           this.setState({ redirect: true })
+          // axios post request
+          axios.post('/api/users', {
+            uid: this.state.uid
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
         }
       })    
   }
@@ -97,7 +100,6 @@ class SignInForm extends React.Component {
                 <input type="password" placeholder="Enter Password" name="password" required ref={(input) => { this.passwordInput = input }} />
 
                 <input type="submit" value="Login" />
-                {/* <p>Dont have an account? <SignUpModal /></p> */}
             </div>
         </form>
       </div>

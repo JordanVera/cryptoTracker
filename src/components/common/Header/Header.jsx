@@ -53,8 +53,8 @@ class Header extends Component {
             <div className={`anim-bg anim-nav anim-nav-${state}`}>
               <Container className="text-right">
                 <nav>
-                  <Link to="/login"> Login </Link>
-                  <Link to="/logout">Logout</Link>
+                    <Link to="/login"> Login </Link> 
+                    <Link to="/logout">Logout</Link>
                 </nav>
               </Container >
             </div>

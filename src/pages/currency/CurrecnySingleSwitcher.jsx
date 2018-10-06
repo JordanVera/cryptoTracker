@@ -6,6 +6,7 @@ import Home from '../home/Home';
 import NotFound from '../not-found/NotFound';
 import SignInForm from '../../components/auth/signin';
 import Logout from '../../components/auth/signout';
+import HoldCoin from '../../components/auth/holdcoin';
 import { ROUTE_CURRENCY_SINGLE, ROUTE_NOT_FOUND } from '../../components/RootRoutes';
 
 class CurrencySingleSwitcher extends Component {
@@ -36,6 +37,7 @@ class CurrencySingleSwitcher extends Component {
           <Route exact path='/' component={Home} />
           <Route exact path='/login' component={SignInForm} />
           <Route exact path='/logout' component={Logout} />
+          <Route exact path='/holdcoin' component={HoldCoin} />
           <Route path={ROUTE_CURRENCY_SINGLE} component={CurrencySingle} />
           <Route path={ROUTE_NOT_FOUND} component={NotFound} />
           <Redirect from='*' exact to={ROUTE_NOT_FOUND} component={NotFound} />
