@@ -8,7 +8,6 @@ import { FormattedMessage } from 'react-intl';
 import { APP_MAIL, APP_NAME } from '../../../constans';
 import { ThemeConsumer } from '../../theme/Theme';
 import ThemeSwitcher from '../../theme/ThemeSwitcher';
-import SignInModal from '../../Modal/SigninModal';
 import './Header.css';
 
 const DURATION = 150;
@@ -54,9 +53,8 @@ class Header extends Component {
             <div className={`anim-bg anim-nav anim-nav-${state}`}>
               <Container className="text-right">
                 <nav>
-                {/* <Button color="danger">{this.props.buttonLabel}</Button> */}
-                  {/* <Button color="primary"  onClick={this.toggle} size="sm">Login</Button> */}
-                  <SignInModal />
+                  <Link to="/login"> Login </Link>
+                  <Link to="/logout">Logout</Link>
                 </nav>
               </Container >
             </div>

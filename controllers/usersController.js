@@ -15,12 +15,10 @@ module.exports = {
           .catch(err => res.status(422).json(err));
       },
     signUpUser: function(req, res) {
-        db.User 
-        .create({
-            username: req.body.username,
-            password: req.body.password
-        })
-        
-        res.send('yasss')
+        db.User
+            .create({
+                username: req.body.username,
+                password: req.body.password
+            })
     }
 }

@@ -6,18 +6,48 @@ import Helmet from 'react-helmet';
 import { APP_TITLE_PREFFIX } from './constans';
 import ThemeProvider, { ThemeConsumer } from './components/theme/Theme';
 import Layout from './components/common/Layout';
+import { app, base } from './firebase/firebase';
 import 'babel-polyfill';
 import './assets/main.css';
 import './assets/bootstrap.css';
 
 class App extends Component {
+constructor(props) {
+    super(props)
+    this.state = {
+      authenticated: false,
+      loading: true
+    };
+  }
+
+
+componentWillMount = _ => {
+  this.removeAuthListener = app.auth().onAuthStateChanged((user) => {
+    if (user) {
+      this.setState({
+        authenticated: true,
+        loading: false
+      })
+    } else {
+      this.setState({
+        authenticated: false,
+        loading: false
+      })
+    }
+  })
+}
+
+componentWillUnmount = _ => {
+  this.removeAuthListener()
+}
+
   render() {
     return (
       <ThemeProvider>
         <ThemeConsumer>
           <Layout>
             <Helmet titleTemplate={`%s | ${APP_TITLE_PREFFIX}`} />
-            <Header />
+            <Header authenticated={this.state.authenticated} />
             <RootRoutes />
             <Footer />
           </Layout>

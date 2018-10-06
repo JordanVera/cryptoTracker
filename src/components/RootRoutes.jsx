@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import CurrencySingleSwitcher from '../pages/currency/CurrecnySingleSwitcher';
+import SignInForm from './auth/signin';
 
 export const ROUTE_HOME = '/';
 export const ROUTE_NOT_FOUND = '/not-found';
