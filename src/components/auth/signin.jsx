@@ -34,7 +34,7 @@ class SignInForm extends React.Component {
     app.auth().signInWithPopup(facebookProvider)
       .then((res, err) => {
         if (err) {
-          this.toaster.show({intent: Intent.DANGER, message: 'Unable to sign in with Facebook'})
+          this.Toaster.show({intent: Intent.DANGER, message: 'Unable to sign in with Facebook'})
         } else {
           this.setState({ redirect: true })
         }
@@ -42,12 +42,35 @@ class SignInForm extends React.Component {
   }
 
   authWithEmailPassword = (event) => {
-    console.log('authed with email')
-    event.preventDefault()
-    console.table([{
-      email: this.emailInput.value,
-      password: this.passwordInput.value,
-    }])
+    event.preventDefault();
+
+    const email    = this.emailInput.value;
+    const password = this.passwordInput.value;
+
+    app.auth().fetchSignInMethodsForEmail(email)
+      .then((providers) => {
+        if (providers.length === 0) {
+          // create user
+          return app.auth().createUserWithEmailAndPassword(email, password)
+        } else if (providers.indexOf('password') === -1) {
+          // they used Facebook
+          this.loginForm.reset();
+          alert('You already have an account with facebook')
+        } else {
+          // sign user in
+          return app.auth().signInWithEmailAndPassword(email, password)
+        }
+      })
+      .then((user) => {
+        if (user) {
+          this.loginForm.reset();
+          this.setState({redirect: true})
+        }
+      })
+      .catch((error) => {
+        alert(error.message)
+        console.log(error.message)
+      })
   }
 
   render() {
