@@ -11,7 +11,7 @@ class RootRoutes extends Component {
   render() {
     return(
     <main>
-      <Route uid={this.props.uid} render={(props) => <CurrencySingleSwitcher {...props} /> }/>
+      <Route component={CurrencySingleSwitcher} uid={this.props.uid} />
     </main>
     )
   }
