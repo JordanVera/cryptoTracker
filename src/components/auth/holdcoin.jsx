@@ -5,6 +5,7 @@ import { Button, Alert } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 import { Toaster, Intent } from '@blueprintjs/core';
 import { app, facebookProvider } from "../../firebase/firebase";
+import axios from 'axios';
 
 const holdCoinStyles = {
   width: "90%",
@@ -22,6 +23,27 @@ class HoldCoin extends React.Component {
     };
   }
 
+  addCoinToPortfolio = (e) => {
+    e.preventDefault(); 
+    const shares = this.sharesInput.value,
+          ticker = this.props.match.params.currency,
+          buyPrice = this.buyPriceInput.value;
+    this.setState({redirect: true});
+
+
+    axios.post(`/api/users/${this.props.id}`, {
+      ticker: ticker,
+      shares: shares, 
+      buyPrice: buyPrice
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   render() {
     if (this.state.redirect === true) {
       return <Redirect to='/' />
@@ -29,16 +51,16 @@ class HoldCoin extends React.Component {
     return (
       <div style={holdCoinStyles}>
 
-        <h3>Add To Your Coinfolio</h3>
+        <h3>Add {this.props.match.params.currency} To Your Coinfolio</h3>
         <hr style={{ marginTop: '10px', marginBottom: '10px' }} />
 
-        <form onSubmit={(e) => {e.preventDefault(); this.setState({redirect: true})}}>
+        <form onSubmit={(e) => { this.addCoinToPortfolio(e) }} ref={(form) => { this.holdCoin = form}}>
             <div className="container">
-                <label htmlFor="shares"><b>shares</b></label>
-                <input type="number" name="shares" required /> 
+                <label htmlFor="shares" style={{paddingRight: '10px'}}><b>shares</b></label>
+                <input type="number" name="shares" required ref={(input) => { this.sharesInput = input }} /> 
 
-                <label htmlFor="buyPrice"><b>buy price</b></label>
-                <input type="number" step="any" name="buyPrice" required  />
+                <label htmlFor="buyPrice" style={{paddingRight: '10px'}}><b>buy price</b></label>
+                <input type="number" step="any" name="buyPrice" required ref={(input) => { this.buyPriceInput = input }} />
 
                 <input type="submit" value="submit" />
             </div>

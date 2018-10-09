@@ -8,9 +8,16 @@ module.exports = {
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       },
-    findById: function(req, res) {
+    updatePortfolio: function(req, res) {
+        const id = req.params.id;
+        console.log(req)
+        const coin = {
+            ticker: req.body.ticker,
+            shares: req.body.shares,
+            buyPrice: req.body.buyPrice
+        }
         db.User
-          .findById(req.params.id)
+          .findOneAndUpdate({_id: id}, {$push: { portfolio: coin}})
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       },

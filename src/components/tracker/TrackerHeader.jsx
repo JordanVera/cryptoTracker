@@ -31,7 +31,7 @@ const TrackerHeader = (props) => {
       </div>
       <div className="app-table-col text-right">
         <FormattedMessage id="app.trade"
-          defaultMessage="Trade" />
+          defaultMessage="Hold" />
       </div>
     </div>
   )

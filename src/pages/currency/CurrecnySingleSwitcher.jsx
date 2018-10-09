@@ -37,7 +37,7 @@ class CurrencySingleSwitcher extends Component {
           <Route exact path='/' component={Home} />
           <Route exact path='/login' component={SignInForm} />
           <Route exact path='/logout' component={Logout} />
-          <Route exact path='/holdcoin' component={HoldCoin} />
+          <Route exact path='/holdcoin/:currency' uid={this.props.uid} component={HoldCoin} />
           <Route path={ROUTE_CURRENCY_SINGLE} component={CurrencySingle} />
           <Route path={ROUTE_NOT_FOUND} component={NotFound} />
           <Redirect from='*' exact to={ROUTE_NOT_FOUND} component={NotFound} />

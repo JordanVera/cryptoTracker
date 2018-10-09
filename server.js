@@ -24,21 +24,21 @@ app.use(routes);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cryptoTracker", { useNewUrlParser: true });
 
-const seedArr = [
-    {
-        uid: "3XQlmIAvNAfAEp9dI6BlK2sj5g32",
-        portfolio: [{
-                ticker: 'XRP',
-                shares: 200,
-                buyPrice: .22
-            },
-            {
-                ticker: 'EOX',
-                shares: 100,
-                buyPrice: 1.12
-            }
-        ]
-    }
+// const seedArr = [
+//     {
+//         uid: "3XQlmIAvNAfAEp9dI6BlK2sj5g32",
+//         portfolio: [{
+//                 ticker: 'XRP',
+//                 shares: 200,
+//                 buyPrice: .22
+//             },
+//             {
+//                 ticker: 'EOX',
+//                 shares: 100,
+//                 buyPrice: 1.12
+//             }
+//         ]
+//     }
     // ,
     // {
     //     username: 'Ivan@gmail.com',
@@ -55,13 +55,13 @@ const seedArr = [
     //         }
     //     ]
     // }
-]
+// ]
 
-db.User.insertMany(seedArr,function(error, docs) {
-    if (error) {
-        console.log(error)
-    }
-})
+// db.User.insertMany(seedArr,function(error, docs) {
+//     if (error) {
+//         console.log(error)
+//     }
+// })
 
 app.listen(PORT, function() {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);

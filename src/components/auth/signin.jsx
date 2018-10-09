@@ -54,7 +54,15 @@ class SignInForm extends React.Component {
       .then((providers) => {
         if (providers.length === 0) {
           // create user
-          return app.auth().createUserWithEmailAndPassword(email, password)
+          app.auth().createUserWithEmailAndPassword(email, password)
+            .then((res,err) => {
+              console.log(res);
+              if (err) {
+                console.log(err)
+              } else {
+                this.setState({ redirect: true })
+              }
+            })
         } else if (providers.indexOf('password') === -1) {
           // they used Facebook
           this.loginForm.reset();
@@ -91,12 +99,12 @@ class SignInForm extends React.Component {
         <form onSubmit={(event) => { this.authWithEmailPassword(event) }} ref={(form) => { this.loginForm = form }} >
             <div className="container">
 
-                <label htmlFor="email"><b>Email</b></label>
+                <label htmlFor="email" style={{paddingRight: '10px'}}><b>Email</b></label>
                 <input type="email" placeholder="Enter Username" name="email" required ref={(input) => { this.emailInput = input }} />
 
                 <hr style={{ marginTop: '10px', marginBottom: '10px' }} />
 
-                <label htmlFor="password"><b>Password</b></label>
+                <label htmlFor="password" style={{paddingRight: '10px'}}><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required ref={(input) => { this.passwordInput = input }} />
 
                 <input type="submit" value="Login" />

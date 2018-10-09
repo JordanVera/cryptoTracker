@@ -33,7 +33,7 @@ const Exchange = ({ currency, type }) => {
     //     <Button color="primary">Track</Button>
     //   </Fragment>
 
-    <Link to="/holdcoin">hold</Link>
+    <Link to={{pathname:`/holdcoin/:${currency}`}} uid={this.props.uid}>hold</Link>
   )
 }
 
