@@ -9,6 +9,7 @@ import HoldCoin from './auth/holdcoin';
 class Exchange extends Component {
   render() {
     const { currency,type,uid } = this.props
+    console.log('UID = ' + uid)
     return (
       // type === 'link' ?
       //   <Fragment>
@@ -33,7 +34,7 @@ class Exchange extends Component {
       //         defaultMessage="Sell" />
       //     </Button> */}
       //     <Button color="primary">Track</Button>
-      //   </Fragment>
+      //   </Fragment>s
   
       <Link to={{pathname:`/holdcoin/:${currency}`}} uid={this.props.uid}>hold</Link>
     )

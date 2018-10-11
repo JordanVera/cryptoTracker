@@ -63,7 +63,7 @@ componentWillUnmount = _ => {
         <ThemeConsumer>
           <Layout>
             <Helmet titleTemplate={`%s | ${APP_TITLE_PREFFIX}`} />
-            <Header authenticated={this.state.authenticated} />
+            <Header authenticated={this.state.authenticated} uid={this.state.uid} />
             <RootRoutes uid={this.state.uid} />
             <Footer />
           </Layout>

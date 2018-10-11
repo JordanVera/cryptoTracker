@@ -9,15 +9,22 @@ module.exports = {
           .catch(err => res.status(422).json(err));
       },
     updatePortfolio: function(req, res) {
-        const id = req.params.id;
-        console.log(req)
+        const uid = req.params.id;
+        console.log(req.params.id)
         const coin = {
             ticker: req.body.ticker,
             shares: req.body.shares,
             buyPrice: req.body.buyPrice
         }
         db.User
-          .findOneAndUpdate({_id: id}, {$push: { portfolio: coin}})
+          .findOneAndUpdate({uid: uid}, {$push: { portfolio: coin}})
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      },
+    displayPortfolio: function(req, res) {
+        
+        db.User
+          .find({portfolio: true})
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       },

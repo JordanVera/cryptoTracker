@@ -55,7 +55,10 @@ class Header extends Component {
                 <nav>
                   {(this.props.authenticated === false)
                     ? <Link to="/login"> Login</Link> 
-                    : <Link to="/logout">Logout</Link>}
+                    : <div>
+                        <Link to="/logout">Logout</Link>
+                        <Link to="/portfolio" uid={this.props.uid}>Portfolio</Link>
+                      </div>}
                 </nav>
               </Container >
             </div>
