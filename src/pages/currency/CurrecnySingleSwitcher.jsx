@@ -34,7 +34,7 @@ class CurrencySingleSwitcher extends Component {
       this.previousLocation !== location
     );
     return (
-      <Fragment uid={this.props.uid}>
+      <Fragment>
         {console.log(this.props)}
         <Switch location={isModal ? this.previousLocation : location}>
           <Route exact path='/' component={Home} />

@@ -6,7 +6,7 @@ router.route('/')
     .post(usersController.authUser);
 
  router.route('/:id')
-    // .get(usersController.findById)
+    .get(usersController.displayPortfolio)
     .post(usersController.updatePortfolio);   
 
 module.exports = router;

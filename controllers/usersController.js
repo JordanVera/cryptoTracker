@@ -22,9 +22,10 @@ module.exports = {
           .catch(err => res.status(422).json(err));
       },
     displayPortfolio: function(req, res) {
-        
+        const uid = req.params.id;
+        console.log(req.body)
         db.User
-          .find({portfolio: true})
+          .find({uid: uid})
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       },
