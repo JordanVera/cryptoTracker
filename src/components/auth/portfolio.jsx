@@ -6,6 +6,7 @@ import { app, facebookProvider } from "../../firebase/firebase";
 import axios from 'axios';
 import PortfolioHeader from './portfolioHeader';
 import './portfolio.css';
+import CountUp from 'react-countup';
 import OwnedCoins from './ownedcoins';
 
 
@@ -38,39 +39,78 @@ class Portfolio extends Component {
     return (
         <div>
           <Container>
-            <Jumbotron>
+            <div className="portfolioJumbotron">
               <Row>
                 <Col>
-                  <h3>$1,200</h3>
-                  <h3>Current Portfolio Value </h3>
+                  <h3>$
+                    <CountUp
+                    start={0}
+                    end={1200.33}
+                    duration={3}
+                    separator=","
+                    decimals={2}
+                    decimal="." />
+                    </h3>
+                  <h3 className="portfolioDescription">Current Portfolio Value </h3>
                 </Col>
               </Row>
               <hr/>
               <Row>
                 <Col xs={12} sm={4}>
-                  <h3>$444</h3>
-                  <h3>Total Cost</h3>
+                  <h3>$
+                    <CountUp
+                    start={0}
+                    end={444}
+                    duration={3}
+                    separator=","
+                    decimals={2}
+                    decimal="." /></h3>
+                  <h3 className="portfolioDescription">Total Cost</h3>
                 </Col>
           
                 <Col xs={12} sm={4}>
-                  <h3>$888</h3>
-                  <h3>Total Profit</h3>
+                  <h3>$
+                  <CountUp
+                    start={0}
+                    end={888.21}
+                    duration={3}
+                    separator=","
+                    decimals={2}
+                    decimal="." />
+                  </h3>
+                  <h3 className="portfolioDescription">Total Profit</h3>
                 </Col>
 
                 <Col xs={12} sm={4}>
-                  <h3>220%</h3>
-                  <h3>Total Profit</h3>
+                  <h3>
+                    <CountUp
+                    start={0}
+                    end={220.11}
+                    duration={3}
+                    separator=","
+                    decimals={2}
+                    decimal="." />%</h3>
+                  <h3 className="portfolioDescription">Total Profit</h3>
                 </Col>
               </Row>
-            </Jumbotron>
-            {/* {trade.ticker} {trade.shares} {trade.buyPrice} */}
-            {/* <PortfolioHeader /> */}
+            </div>
+            <PortfolioHeader />
+            <hr />
             { this.state.portfolio.map(trade => 
-            <li className="indivCoin">
-              <p>ticker</p>
-              <p id="ticker">{trade.ticker}</p>
-            
-            </li>)}
+              <li className="indivCoin">
+                <Row>
+                  <Col sm={8}>
+                    <p id="ticker">{trade.ticker}</p>
+                  </Col>
+                  <Col sm={2}>
+                    <p id="ticker">{trade.shares}</p>
+                  </Col>
+                  <Col sm={2}>
+                    <p id="ticker">{trade.buyPrice} <Button color="danger" style={{marginLeft: "24px"}}>Delete</Button></p>
+                  </Col>
+                </Row>
+              </li>
+          )}
             </Container>
         </div>
     );
