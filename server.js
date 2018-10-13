@@ -5,6 +5,7 @@ const express = require('express'),
       app = express(),
       db = require('./models'),
       session = require('express-session'),
+      path = require('path'),
       googleStrategy = require('passport-google-oauth').OAuth2Strategy,
       PORT = process.env.PORT || 3001;
 
