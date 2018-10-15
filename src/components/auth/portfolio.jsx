@@ -32,14 +32,6 @@ class Portfolio extends Component {
     .catch( error => {
       console.log(error);
     });
-
-    let totalCostArr;
-    this.state.portfolio.map(portfolioItem => {
-      totalCostArr.push(portfolioItem.buyPrice * portfolioItem.shares);
-      console.log('total cost array =');
-      console.log(totalCostArr);
-    })
-
   }
 
 
@@ -51,13 +43,20 @@ class Portfolio extends Component {
               <Row>
                 <Col>
                   <ul>
-                    {/* <CountUp
-                    start={0}
-                    end={1200.33}
-                    duration={3}
-                    separator=","
-                    decimals={2}
-                    decimal="." /> */}
+                    <h3>$
+                      <CountUp
+                      start={0}
+                      end={1200.33}
+                      duration={3}
+                      separator=","
+                      decimals={2}
+                      decimal="." />
+                    </h3>
+                  {/* {
+                    this.state.portfolio.map(portfolioItem => {
+                      return <li>{portfolioItem.buyPrice * portfolioItem.shares}</li>; 
+                    })
+                  } */}
                   </ul>
                   <h3 className="portfolioDescription">Current Portfolio Value </h3>
                 </Col>
