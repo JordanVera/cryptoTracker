@@ -22,16 +22,24 @@ class Portfolio extends Component {
   componentDidMount = _ => {
     
      // axios post request
-     axios.get(`/api/users/${this.props.uid}`)
-    .then( response => {
-      console.log("Getting portfolio data");
-      console.log(response.data[0].portfolio);
-      const portf = response.data[0].portfolio;
-      this.setState({ portfolio: portf });
+    axios.get(`/api/users/${this.props.uid}`)
+      .then( response => {
+        console.log("Getting portfolio data");
+        console.log(response.data[0].portfolio);
+        const portf = response.data[0].portfolio;
+        this.setState({ portfolio: portf });
     })
     .catch( error => {
       console.log(error);
     });
+
+    let totalCostArr;
+    this.state.portfolio.map(portfolioItem => {
+      totalCostArr.push(portfolioItem.buyPrice * portfolioItem.shares);
+      console.log('total cost array =');
+      console.log(totalCostArr);
+    })
+
   }
 
 
@@ -42,15 +50,15 @@ class Portfolio extends Component {
             <div className="portfolioJumbotron">
               <Row>
                 <Col>
-                  <h3>$
-                    <CountUp
+                  <ul>
+                    {/* <CountUp
                     start={0}
                     end={1200.33}
                     duration={3}
                     separator=","
                     decimals={2}
-                    decimal="." />
-                    </h3>
+                    decimal="." /> */}
+                  </ul>
                   <h3 className="portfolioDescription">Current Portfolio Value </h3>
                 </Col>
               </Row>
