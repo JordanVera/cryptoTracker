@@ -23,4 +23,4 @@ Creators
 
  - Front end is a JavaScript and react theme from mzworks on theme
    forest, the theme name is 'linecoins'
- -  Jordan Vera, built the back end of this application to allow unique user sign in. My GitHub is @JordanVera 
+ -  Jordan Vera, built the back end of this application to allow unique user sign in. My GitHub is @JordanVera adasd
