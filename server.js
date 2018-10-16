@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === 'production') {
   };
 
 // const seedArr = [
-//     {
+//      {
 //         uid: "3XQlmIAvNAfAEp9dI6BlK2sj5g32",
 //         portfolio: [{
 //                 ticker: 'XRP',
