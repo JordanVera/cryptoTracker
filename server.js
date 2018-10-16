@@ -26,15 +26,15 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cryptoTracker",
 
 if (process.env.NODE_ENV === 'production') {
     // Serve any static files
-    app.use('api/users', express.static(path.join(__dirname, '/build')));
+    app.use('/', express.static(path.join(__dirname, '/build')));
     // Handle React routing, return all requests to React app
     app.get('*', function (req, res) {
-      res.sendFile('api/users', path.join(__dirname, '/build', 'index.html'));
+      res.sendFile(path.join(__dirname, '/build', 'index.html'));
     });
   };
 
 // const seedArr = [
-//      {
+//     {
 //         uid: "3XQlmIAvNAfAEp9dI6BlK2sj5g32",
 //         portfolio: [{
 //                 ticker: 'XRP',
