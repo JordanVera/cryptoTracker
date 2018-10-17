@@ -49,7 +49,6 @@
     "server-start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "install": "cd client && npm install",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm run build"
   },
